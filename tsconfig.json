@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "types": ["element-plus/global","node"],
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "importHelpers": true, // 不让同样的辅助函数重复的出现在多个文件中
+    /* Bundler mode */
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@image/s*": ["./src/images/*"],
+      "@views/*": ["./src/views/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@plugins/*": ["./src/plugins/*"],
+      "@utils/*": ["./src/utils/*"],
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "./auto-imports.d.ts","./components.d.ts", "src/plugins/i18n/zh.js"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
