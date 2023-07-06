@@ -17,11 +17,13 @@ jobs:
 
       - name: Install and Build   # 安装依赖、打包，如果提前已打包好无需这一步
         run: |
-          npm install
-          npm run build
+          yarn
+          yarn build
 
       - name: Deploy   # 部署
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           branch: gh-pages # 部署后提交到那个分支
           folder: dist # 这里填打包好的目录名称
+          CLEAN: true
