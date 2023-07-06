@@ -47,7 +47,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
                 </el-row>
             </el-header>
             <el-main>Main111</el-main>
-            <el-footer>Footer222</el-footer>
+            <el-footer>Foottter222</el-footer>
         </el-container>
     </div>
 </template>
