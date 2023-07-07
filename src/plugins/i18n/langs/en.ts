@@ -1,14 +1,14 @@
 export default {
-    title_py: "XLJM",
-    title: "鑫隆精密",
+    title_py: "",
+    title: "XinLonJingMi",
     menu: {
-        index: "首页",
-        product: "产品",
-        news: "新闻",
-        aboutus: "关于我们"
+        index: "Home",
+        product: "产品en",
+        news: "News",
+        aboutus: "About Us"
     },
-    i18n: "国际化",
+    i18n: "国际化en",
     message: {
-        hello: "你好，世界",
+        hello: "你好，世界en",
     },
 }

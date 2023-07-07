@@ -12,6 +12,7 @@ const changePage = (page:any) => {
 
 
 i18n.global.locale = "zh"
+
 const activeIndex = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {
     console.log(key, keyPath)
@@ -21,9 +22,9 @@ const handleSelect = (key: string, keyPath: string[]) => {
 
 <template>
     <div class="common-layout">
+        <div>123</div>
         <el-container>
             <div style="height: auto;"></div>
-
             <el-header>
                 <el-row class="center">
                     <el-col :span="6">
@@ -33,7 +34,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
                         </span>
                     </el-col>
                     <el-col :span="12">
-                        <el-menu class="center"  :default-active="activeIndex" mode="horizontal"
+                        <el-menu class="center" style=" background-color: transparent" :default-active="activeIndex" mode="horizontal"
                             @select="handleSelect">
                             <el-menu-item index="1" @click="changePage(indexPage)"> {{ $t('menu.index') }}</el-menu-item>
                             <el-menu-item index="2"  @click="changePage(productPage)"> {{ $t('menu.product') }}</el-menu-item>
@@ -51,9 +52,9 @@ const handleSelect = (key: string, keyPath: string[]) => {
                             </span>
                             <template #dropdown>
                                 <el-dropdown-menu>
-                                    <el-dropdown-item>Global-English</el-dropdown-item>
-                                    <el-dropdown-item>China-简体中文</el-dropdown-item>
-                                    <el-dropdown-item>Japan-日本語</el-dropdown-item>
+                                    <el-dropdown-item @click="i18n.global.locale='en'" >Global-English</el-dropdown-item>
+                                    <el-dropdown-item @click="i18n.global.locale='zh'">China-简体中文</el-dropdown-item>
+                                    <el-dropdown-item @click="i18n.global.locale='ja'">Japan-日本語</el-dropdown-item>
                                 </el-dropdown-menu>
                             </template>
                         </el-dropdown>
@@ -83,9 +84,6 @@ const handleSelect = (key: string, keyPath: string[]) => {
     text-shadow: 0 0 4px #32003c;
 }
 
-.cc {
-    background-color: red;
-}
 
 .center {
     text-align: center;
@@ -95,15 +93,22 @@ const handleSelect = (key: string, keyPath: string[]) => {
     justify-content: center;
 }
 
-.el-header {
-    background-color: rgb(206, 253, 253);
-}
+
 
 .example-showcase .el-dropdown-link {
     cursor: pointer;
     color: var(--el-color-primary);
     display: flex;
     align-items: center;
+}
+
+//test
+
+.el-header {
+    background-color: rgb(206, 253, 253);
+}
+.cc {
+    background-color: red;
 }
 
 .el-main {
