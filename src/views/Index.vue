@@ -1,6 +1,15 @@
 <script lang="ts" setup>
 import i18n from "@plugins/i18n/i18n.ts";
-import { ref } from 'vue'
+import { ref,shallowRef } from 'vue'
+import indexPage from "@components/index/Index.vue"
+import newsPage from "@components/news/News.vue"
+import aboutusPage from "@components/aboutus/Aboutus.vue"
+import productPage from "@components/product/Product.vue"
+let currentTab = shallowRef(indexPage)
+const changePage = (page:any) => {
+  currentTab.value = page
+}
+
 
 i18n.global.locale = "zh"
 const activeIndex = ref('1')
@@ -13,6 +22,8 @@ const handleSelect = (key: string, keyPath: string[]) => {
 <template>
     <div class="common-layout">
         <el-container>
+            <div style="height: auto;"></div>
+
             <el-header>
                 <el-row class="center">
                     <el-col :span="6">
@@ -22,12 +33,12 @@ const handleSelect = (key: string, keyPath: string[]) => {
                         </span>
                     </el-col>
                     <el-col :span="12">
-                        <el-menu class="center" :router="true" :default-active="activeIndex" mode="horizontal"
+                        <el-menu class="center"  :default-active="activeIndex" mode="horizontal"
                             @select="handleSelect">
-                            <el-menu-item index="1"> {{ $t('menu.index') }}</el-menu-item>
-                            <el-menu-item index="2"> {{ $t('menu.product') }}</el-menu-item>
-                            <el-menu-item index="3"> {{ $t('menu.news') }}</el-menu-item>
-                            <el-menu-item index="4"> {{ $t('menu.aboutus') }}</el-menu-item>
+                            <el-menu-item index="1" @click="changePage(indexPage)"> {{ $t('menu.index') }}</el-menu-item>
+                            <el-menu-item index="2"  @click="changePage(productPage)"> {{ $t('menu.product') }}</el-menu-item>
+                            <el-menu-item index="3"  @click="changePage(newsPage)"> {{ $t('menu.news') }}</el-menu-item>
+                            <el-menu-item index="4"  @click="changePage(aboutusPage)"> {{ $t('menu.aboutus') }}</el-menu-item>
                         </el-menu>
                     </el-col>
                     <el-col :span="6">
@@ -49,7 +60,11 @@ const handleSelect = (key: string, keyPath: string[]) => {
                     </el-col>
                 </el-row>
             </el-header>
-            <el-main>Main111222</el-main>
+
+
+            <el-main>
+                <component :is="currentTab" class="tab"></component>
+            </el-main>
             <el-footer>yejiao1</el-footer>
         </el-container>
     </div>
@@ -97,4 +112,5 @@ const handleSelect = (key: string, keyPath: string[]) => {
 
 .el-footer {
     background-color: red;
-}</style>
+}
+</style>

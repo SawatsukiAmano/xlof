@@ -1,3 +1,3 @@
 <template>
-    aboutus
+    home
 </template>

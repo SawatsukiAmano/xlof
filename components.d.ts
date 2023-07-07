@@ -20,8 +20,11 @@ declare module 'vue' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElRow: typeof import('element-plus/es')['ElRow']
-    Home: typeof import('./src/components/index/Home.vue')['default']
+    Home: typeof import('./src/components/home/Home.vue')['default']
+    Index: typeof import('./src/components/index/Index.vue')['default']
     News: typeof import('./src/components/news/News.vue')['default']
     Product: typeof import('./src/components/product/Product.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
