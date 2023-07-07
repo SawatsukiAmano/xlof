@@ -3,12 +3,12 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
     {
         path: "/",
-        name: 'home',
+        name: 'root',
         component: () => import("@views/Index.vue"),
         children: [{
             path: '/',
             name: 'index',
-            component: () => import('@views/index/Index.vue'),
+            component: () => import('@components/index/Index.vue'),
             meta: {
                 title: '首页'
             }
@@ -16,7 +16,7 @@ const routes = [
         {
             path: '/aboutus',
             name: 'aboutus',
-            component: () => import('@views/aboutus/Aboutus.vue'),
+            component: () => import('@components/aboutus/Aboutus.vue'),
             meta: {
                 title: '关于我们'
             }
