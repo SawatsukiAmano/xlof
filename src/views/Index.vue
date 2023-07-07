@@ -16,11 +16,14 @@ const handleSelect = (key: string, keyPath: string[]) => {
             <el-header>
                 <el-row class="center">
                     <el-col :span="6">
-                        {{ $t('title_py') }}&nbsp;
-                        {{ $t('title') }}
+                        <span class="title-font">
+                            {{ $t('title_py') }}&nbsp;
+                            {{ $t('title') }}
+                        </span>
                     </el-col>
                     <el-col :span="12">
-                        <el-menu class="center" :router="true" :default-active="activeIndex" mode="horizontal" @select="handleSelect">
+                        <el-menu class="center" :router="true" :default-active="activeIndex" mode="horizontal"
+                            @select="handleSelect">
                             <el-menu-item index="1"> {{ $t('menu.index') }}</el-menu-item>
                             <el-menu-item index="2"> {{ $t('menu.product') }}</el-menu-item>
                             <el-menu-item index="3"> {{ $t('menu.news') }}</el-menu-item>
@@ -28,7 +31,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
                         </el-menu>
                     </el-col>
                     <el-col :span="6">
-                        <el-dropdown size="large " >
+                        <el-dropdown size="large ">
                             <span class="center el-dropdown-link">
                                 {{ $t('i18n') }}
                                 <el-icon class="el-icon--right">
@@ -56,10 +59,20 @@ const handleSelect = (key: string, keyPath: string[]) => {
 
 
 <style lang="scss" scoped>
-.cc{
-background-color: red;
+.title-font {
+    text-align: center;
+    font-size: 32px;
+    line-height: 2;
+    color: #fff;
+    font-weight: bolder;
+    text-shadow: 0 0 4px #32003c;
 }
-.center{
+
+.cc {
+    background-color: red;
+}
+
+.center {
     text-align: center;
     /* 垂直居中 */
     align-items: center;
@@ -70,11 +83,12 @@ background-color: red;
 .el-header {
     background-color: rgb(206, 253, 253);
 }
+
 .example-showcase .el-dropdown-link {
-  cursor: pointer;
-  color: var(--el-color-primary);
-  display: flex;
-  align-items: center;
+    cursor: pointer;
+    color: var(--el-color-primary);
+    display: flex;
+    align-items: center;
 }
 
 .el-main {
@@ -83,5 +97,4 @@ background-color: red;
 
 .el-footer {
     background-color: red;
-}
-</style>
+}</style>

@@ -1,6 +1,6 @@
 export default {
     title_py: "XLJM",
-    title: "鑫隆精密",
+    title: "测试",
     menu: {
         index: "首页",
         product: "产品",
