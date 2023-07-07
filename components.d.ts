@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Aboutus: typeof import('./src/components/aboutus/Aboutus.vue')['default']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
@@ -19,5 +20,8 @@ declare module 'vue' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElRow: typeof import('element-plus/es')['ElRow']
+    Home: typeof import('./src/components/index/Home.vue')['default']
+    News: typeof import('./src/components/news/News.vue')['default']
+    Product: typeof import('./src/components/product/Product.vue')['default']
   }
 }
