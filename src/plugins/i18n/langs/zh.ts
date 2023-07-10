@@ -1,6 +1,6 @@
 export default {
-    title_py: "XLJM",
-    title: "测试",
+    title_py: "XL",
+    title: "测试测试",
     menu: {
         index: "首页",
         product: "产品",

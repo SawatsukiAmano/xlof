@@ -3,11 +3,11 @@ export default {
     title: "XinLonJingMi",
     menu: {
         index: "Home",
-        product: "产品en",
+        product: "Product",
         news: "News",
         aboutus: "About Us"
     },
-    i18n: "国际化en",
+    i18n: "International",
     message: {
         hello: "你好，世界en",
     },

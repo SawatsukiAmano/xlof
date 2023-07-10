@@ -5,6 +5,7 @@ import indexPage from "@components/index/Index.vue"
 import newsPage from "@components/news/News.vue"
 import aboutusPage from "@components/aboutus/Aboutus.vue"
 import productPage from "@components/product/Product.vue"
+import 'element-plus/theme-chalk/display.css'
 let currentTab = shallowRef(indexPage)
 const changePage = (page:any) => {
   currentTab.value = page
@@ -22,18 +23,32 @@ const handleSelect = (key: string, keyPath: string[]) => {
 
 <template>
     <div class="common-layout">
-        <div>123</div>
+        <div style="background-color: rgba(8, 8, 8, 0.8); border-bottom:1.5px  solid rgb(0, 0, 0); text-align: right;">
+            <img src="@assets/logo/douyin.svg" class="logo" alt="抖音" />&nbsp;
+            <img src="@assets/logo/tt.svg" class="logo" alt="tiktok" />&nbsp;
+            <img src="@assets/logo/vx.svg" class="logo" alt="微信" />&nbsp;
+            <img src="@assets/logo/mail.svg" class="logo" alt="e-mail" />&nbsp;
+        </div>
         <el-container>
             <div style="height: auto;"></div>
             <el-header>
-                <el-row class="center">
-                    <el-col :span="6">
-                        <span class="title-font">
+                <el-row class="center hidden-sm-and-up">
+                    <el-col :xs="20">
+                        1
+                    </el-col>
+                    <el-col :xs="4">
+                        2
+                    </el-col>
+                    </el-row>
+
+                <el-row class="center hidden-xs-only">
+                    <el-col :lg="6" :md="5" :sm="7">
+                        <span class="title-font ">
                             {{ $t('title_py') }}&nbsp;
                             {{ $t('title') }}
                         </span>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :lg="12" :md="14" :sm="10">
                         <el-menu class="center" style=" background-color: transparent" :default-active="activeIndex" mode="horizontal"
                             @select="handleSelect">
                             <el-menu-item index="1" @click="changePage(indexPage)"> {{ $t('menu.index') }}</el-menu-item>
@@ -42,9 +57,10 @@ const handleSelect = (key: string, keyPath: string[]) => {
                             <el-menu-item index="4"  @click="changePage(aboutusPage)"> {{ $t('menu.aboutus') }}</el-menu-item>
                         </el-menu>
                     </el-col>
-                    <el-col :span="6">
+
+                    <el-col :lg="6" :md="5" :sm="7">
                         <el-dropdown size="large ">
-                            <span class="center el-dropdown-link">
+                            <span class="center el-dropdown-link" style="cursor:pointer;">
                                 {{ $t('i18n') }}
                                 <el-icon class="el-icon--right">
                                     <arrow-down />
@@ -60,8 +76,9 @@ const handleSelect = (key: string, keyPath: string[]) => {
                         </el-dropdown>
                     </el-col>
                 </el-row>
-            </el-header>
 
+
+            </el-header>
 
             <el-main>
                 <component :is="currentTab" class="tab"></component>
@@ -75,9 +92,13 @@ const handleSelect = (key: string, keyPath: string[]) => {
 
 
 <style lang="scss" scoped>
+.logo{
+    height: 20px;
+    color: rgb(255, 255, 255);
+}
 .title-font {
+    font-size: 32px; 
     text-align: center;
-    font-size: 32px;
     line-height: 2;
     color: #fff;
     font-weight: bolder;
