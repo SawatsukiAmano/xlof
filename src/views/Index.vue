@@ -6,6 +6,8 @@ import newsPage from "@components/news/News.vue"
 import aboutusPage from "@components/aboutus/Aboutus.vue"
 import productPage from "@components/product/Product.vue"
 import 'element-plus/theme-chalk/display.css'
+import vxJPG from '@assets/img/vx.jpg'
+import dyJPG from '@assets/img/dy.jpg'
 let currentTab = shallowRef(indexPage)
 const changePage = (page: any) => {
     currentTab.value = page
@@ -25,13 +27,18 @@ const handleSelect = (key: string, keyPath: string[]) => {
     <div class="common-layout" style="margin: 0;padding: 0; ">
         <div
             style="padding-top: 1.5px; background-color: rgba(8, 8, 8, 0.8); border-bottom:1.5px solid rgb(0, 0, 0); text-align: right;">
-            <el-popover placement="top-start" title="抖音" trigger="hover">
+            <el-popover title="抖音" trigger="hover" width="255">
                 <template #reference>
                     <a href="https://www.douyin.com/user/MS4wLjABAAAAbRNr--Am8NylBFhEqTdjgPq6PPei9kkD_xIVvqg2S3A"
                         target="_blank" style="cursor:pointer;"><img src="@assets/logo/douyin.svg"
                             style="height: 14px;  margin-bottom: 1px;" alt="抖音" />&nbsp;&nbsp;&nbsp;</a>
                 </template>
+                <template #default>
+                    <el-image style="width: 233px; height: 300px" :src="dyJPG" fit="scale-down" />
+                </template>
             </el-popover>&nbsp;
+
+
             <el-popover placement="top-start" title="tiktok" trigger="hover">
                 <template #reference>
                     <a href="" target="_blank" style="cursor:pointer;"><img src="@assets/logo/tt.svg"
@@ -42,17 +49,13 @@ const handleSelect = (key: string, keyPath: string[]) => {
                 <template #reference>
                     <a href="" target="_blank" style="cursor:pointer;"><img src="@assets/logo/vx.svg" style="height: 17px;"
                             alt="微信" />&nbsp;&nbsp;&nbsp;</a> </template>
-                            <template #default>
-                                <el-image style="width: 100px; height: 100px" src="@/assets/img/vx.jpg"  />
-                            </template>
+                <template #default>
+                    <el-image :src="vxJPG" fit="contain" />
+                </template>
             </el-popover>&nbsp;
 
-            <el-popover placement="top-start" title="mail 邮件" trigger="hover">
-                <template #reference>
-                    <a href="mailto:xjh@xinlon.ltd" target="_blank" style="cursor:pointer;"><img src="@assets/logo/mail.svg"
-                            style="height: 17px;" alt="e-mail" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                </template>
-            </el-popover>
+            <a href="mailto:xjh@xinlon.ltd" target="_blank" style="cursor:pointer;"><img src="@assets/logo/mail.svg"
+                    style="height: 17px;" alt="e-mail" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
         </div>
         <el-container>
             <div style="height: auto;"></div>
