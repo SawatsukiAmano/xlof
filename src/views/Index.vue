@@ -29,7 +29,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
                     style="height: 14px;  margin-bottom: 1px;" alt="抖音" />&nbsp;&nbsp;&nbsp;</a>&nbsp;
             <a title="tiktok"  href="" target="_blank" style="cursor:pointer;"><img src="@assets/logo/tt.svg"
                     style="height: 15px; margin-top: 1px;" alt="tiktok" />&nbsp;&nbsp;&nbsp;</a>&nbsp;
-            <a title="微信 wechat"  href="" target="_blank" style="cursor:pointer;"><img src="@assets/logo/vx.svg"
+            <a title="微信 wechat"  href="src/assets/img/vx.jpg" target="_blank" style="cursor:pointer;"><img src="@assets/logo/vx.svg"
                     style="height: 17px;" alt="微信" />&nbsp;&nbsp;&nbsp;</a>&nbsp;
             <a title="mail 邮件" href="mailto:xjh@xinlon.ltd" target="_blank" style="cursor:pointer;"><img src="@assets/logo/mail.svg"
                     style="height: 17px;" alt="e-mail" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -129,7 +129,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
 //test
 
 .el-header {
-    background-color: rgb(206, 253, 253);
+    // background-color: rgb(206, 253, 253);
 }
 
 .cc {
