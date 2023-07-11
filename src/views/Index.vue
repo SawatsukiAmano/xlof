@@ -6,122 +6,182 @@ import newsPage from "@components/news/News.vue"
 import aboutusPage from "@components/aboutus/Aboutus.vue"
 import productPage from "@components/product/Product.vue"
 import 'element-plus/theme-chalk/display.css'
-import vxJPG from '@assets/img/vx.jpg'
-import dyJPG from '@assets/img/dy.jpg'
+import headerLink from "@views/units/HeaderLink.vue"
+import footerLink from "@views/units/FooterLink.vue"
+// import indexPNG from "@assets/img/index.png"
+
+//头
+const elHeaderStyle = ref()
+//头背景div
+const rowIndexMenuMain = ref()
+//头导航栏div
+const rowIndexMenuSub = ref()
+
+const headFontClass = ref('foucs-head-font')
+
+
+const menuRef = ref()
+const spanI18n = ref()
+//切换body
 let currentTab = shallowRef(indexPage)
-const changePage = (page: any) => {
-    currentTab.value = page
-}
-
-
-i18n.global.locale = "zh"
-
 const activeIndex = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {
     console.log(key, keyPath)
+    //切换header样式
+    // switch (key) {
+    // case '1':
+    //     rowIndexMenuMain.value.style.height = '500px'
+    //     rowIndexMenuMain.value.style.backgroundColor = 'red'
+    //     rowIndexMenuMain.value.style.backgroundImage = 'url(../src/assets/img/index.png)'
+    //     console.log("INDEX")
+    //     break;
+    // case '2':
+    //     rowIndexMenuMain.value.style.height = '300px'
+    //     rowIndexMenuMain.value.style.backgroundColor = 'yellow'
+    //     rowIndexMenuMain.value.style.backgroundImage = indexPage
+    //     console.log("PRODUCT")
+    //     break;
+    // case '3':
+    //     break;
+    // case '4':
+    //     break;
+    // }
 }
+
+//鼠标移入导航栏
+const changeIndexMenuStyleIn = () => {
+    headFontClass.value = 'foucs-head-font'
+    //header背景颜色
+    rowIndexMenuSub.value.style.backgroundColor = 'white'
+    //设置渐变
+    rowIndexMenuSub.value.style.transition = 'background-color .5s ease-out'
+    //设置下边框
+    rowIndexMenuSub.value.style.borderBottom='1px solid #a7a3a3'
+}
+//鼠标移出导航栏
+const changeIndexMenuStyleOut = () => {
+    headFontClass.value = 'unfoucs-head-font'
+    rowIndexMenuSub.value.style.backgroundColor = 'transparent'
+    rowIndexMenuSub.value.style.transition = 'background-color .5s ease-out'
+    rowIndexMenuSub.value.style.borderBottom='0px solid #000'
+}
+
+const changePage = (page: any) => {
+    currentTab = shallowRef(page)//切换body页面
+}
+
+i18n.global.locale = "zh"
 
 </script>
 
 <template>
-    <div class="common-layout" style="margin: 0;padding: 0; ">
-        <div
-            style="padding-top: 1.5px; background-color: rgba(8, 8, 8, 0.8); border-bottom:1.5px solid rgb(0, 0, 0); text-align: right;">
-            <el-popover title="抖音" trigger="hover" width="255">
-                <template #reference>
-                    <a href="https://www.douyin.com/user/MS4wLjABAAAAbRNr--Am8NylBFhEqTdjgPq6PPei9kkD_xIVvqg2S3A"
-                        target="_blank" style="cursor:pointer;"><img src="@assets/logo/douyin.svg"
-                            style="height: 14px;  margin-bottom: 1px;" alt="抖音" />&nbsp;&nbsp;&nbsp;</a>
-                </template>
-                <template #default>
-                    <el-image style="width: 233px; height: 300px" :src="dyJPG" fit="scale-down" />
-                </template>
-            </el-popover>&nbsp;
-
-
-            <el-popover placement="top-start" title="tiktok" trigger="hover">
-                <template #reference>
-                    <a href="" target="_blank" style="cursor:pointer;"><img src="@assets/logo/tt.svg"
-                            style="height: 15px; margin-top: 1px;" alt="tiktok" />&nbsp;&nbsp;&nbsp;</a> </template>
-
-            </el-popover>&nbsp;
-            <el-popover placement="top-start" title="微信 wechat" trigger="hover">
-                <template #reference>
-                    <a href="" target="_blank" style="cursor:pointer;"><img src="@assets/logo/vx.svg" style="height: 17px;"
-                            alt="微信" />&nbsp;&nbsp;&nbsp;</a> </template>
-                <template #default>
-                    <el-image :src="vxJPG" fit="contain" />
-                </template>
-            </el-popover>&nbsp;
-
-            <a href="mailto:xjh@xinlon.ltd" target="_blank" style="cursor:pointer;"><img src="@assets/logo/mail.svg"
-                    style="height: 17px;" alt="e-mail" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
+    <div class="common-layout fillc">
+        <headerLink />
         <el-container>
-            <div style="height: auto;"></div>
-            <el-header>
-                <el-row class="center hidden-sm-and-up">
-                    <el-col :xs="20">
-                        1
-                    </el-col>
-                    <el-col :xs="4">
-                        2
-                    </el-col>
-                </el-row>
+            <el-header ref="elHeaderStyle" class="fillc">
+                <div ref="rowIndexMenuMain">
 
-                <el-row class="center hidden-xs-only">
-                    <el-col :lg="6" :md="5" :sm="7">
-                        <span class="title-font ">
-                            {{ $t('title_py') }}&nbsp;
-                            {{ $t('title') }}
-                        </span>
-                    </el-col>
-                    <el-col :lg="12" :md="14" :sm="10">
-                        <el-menu class="center" style=" background-color: transparent" :default-active="activeIndex"
-                            mode="horizontal" @select="handleSelect">
-                            <el-menu-item index="1" @click="changePage(indexPage)"> {{ $t('menu.index') }}</el-menu-item>
-                            <el-menu-item index="2" @click="changePage(productPage)"> {{ $t('menu.product')
-                            }}</el-menu-item>
-                            <el-menu-item index="3" @click="changePage(newsPage)"> {{ $t('menu.news') }}</el-menu-item>
-                            <el-menu-item index="4" @click="changePage(aboutusPage)"> {{ $t('menu.aboutus')
-                            }}</el-menu-item>
-                        </el-menu>
-                    </el-col>
+                    <!--手机导航栏-->
+                    <el-row class="center hidden-sm-and-up">
+                        <el-col :xs="20">
+                            1
+                        </el-col>
+                        <el-col :xs="4">
+                            2
+                        </el-col>
+                    </el-row>
 
-                    <el-col :lg="6" :md="5" :sm="7">
-                        <el-dropdown size="large ">
-                            <span class="center el-dropdown-link" style="cursor:pointer;">
-                                {{ $t('i18n') }}
-                                <el-icon class="el-icon--right">
-                                    <arrow-down />
-                                </el-icon>
-                            </span>
-                            <template #dropdown>
-                                <el-dropdown-menu>
-                                    <el-dropdown-item @click="i18n.global.locale = 'en'">Global-English</el-dropdown-item>
-                                    <el-dropdown-item @click="i18n.global.locale = 'zh'">China-简体中文</el-dropdown-item>
-                                    <el-dropdown-item @click="i18n.global.locale = 'ja'">Japan-日本語</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </template>
-                        </el-dropdown>
-                    </el-col>
-                </el-row>
+                    <!--pc导航栏-->
+                    <div ref="rowIndexMenuSub">
+                        <el-row v-on:mouseover="changeIndexMenuStyleIn()" v-on:mouseout="changeIndexMenuStyleOut()"
+                            class="center hidden-xs-only">
+                            <el-col :lg="6" :md="5" :sm="7">
+                                <span class="title-font ">
+                                    {{ $t('title_py') }}&nbsp;
+                                    {{ $t('title') }}
+                                </span>
+                            </el-col>
+                            <el-col :lg="12" :md="14" :sm="10">
+                                <el-menu ref="menuRef" class="center" style=" background-color: transparent"
+                                    :default-active="activeIndex" mode="horizontal" @select="handleSelect">
+                                    <el-menu-item :class="headFontClass" index="1" @click="changePage(indexPage)"> {{
+                                        $t('menu.index')
+                                    }}</el-menu-item>
+                                    <el-menu-item index="2" :class="headFontClass" @click="changePage(productPage)"> {{
+                                        $t('menu.product')
+                                    }}</el-menu-item>
+                                    <el-menu-item index="3" :class="headFontClass" @click="changePage(newsPage)"> {{
+                                        $t('menu.news')
+                                    }}</el-menu-item>
+                                    <el-menu-item index="4" :class="headFontClass" @click="changePage(aboutusPage)"> {{
+                                        $t('menu.aboutus')
+                                    }}</el-menu-item>
+                                </el-menu>
+                            </el-col>
 
+                            <!--国际化-->
+                            <el-col :lg="6" :md="5" :sm="7">
+                                <el-dropdown size="large ">
+                                    <span ref="spanI18n" :class="headFontClass" class="center el-dropdown-link" style="cursor:pointer;">
+                                        {{ $t('i18n') }}
+                                        <el-icon class="el-icon--right">
+                                            <arrow-down />
+                                        </el-icon>
+                                    </span>
+                                    <template #dropdown>
+                                        <el-dropdown-menu>
+                                            <el-dropdown-item
+                                                @click="i18n.global.locale = 'en'">Global-English</el-dropdown-item>
+                                            <el-dropdown-item
+                                                @click="i18n.global.locale = 'zh'">China-简体中文</el-dropdown-item>
+                                            <el-dropdown-item
+                                                @click="i18n.global.locale = 'ja'">Japan-日本語</el-dropdown-item>
+                                        </el-dropdown-menu>
+                                    </template>
+                                </el-dropdown>
+                            </el-col>
+                        </el-row>
+                    </div>
+
+                    <el-row>
+                        <!--导航简介-->
+                        <!-- <el-image :src="indexPNG" fit="fill" /> -->
+                    </el-row>
+                </div>
 
             </el-header>
 
             <el-main>
                 <component :is="currentTab" class="tab"></component>
             </el-main>
-            <el-footer>yejiao1</el-footer>
+            <el-footer>
+                <footerLink />
+            </el-footer>
         </el-container>
     </div>
 </template>
 
 
-
-
 <style lang="scss" scoped>
+.foucs-head-font {
+    color: black;
+    font-weight: bold;
+    transition:'color 0.5s';
+    font-size: 19px;
+}
+
+.unfoucs-head-font {
+    color: rgb(255, 255, 255);
+    transition:'color 0.5s';
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.fillc {
+    margin: 0;
+    padding: 0;
+}
+
 .title-font {
     font-size: 32px;
     text-align: center;
@@ -131,6 +191,9 @@ const handleSelect = (key: string, keyPath: string[]) => {
     text-shadow: 0 0 4px #32003c;
 }
 
+.el-menu {
+    border: 0 !important;
+}
 
 .center {
     text-align: center;
@@ -140,30 +203,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
     justify-content: center;
 }
 
-
-
-.example-showcase .el-dropdown-link {
-    cursor: pointer;
-    color: var(--el-color-primary);
-    display: flex;
-    align-items: center;
-}
-
-//test
-
-.el-header {
-    // background-color: rgb(206, 253, 253);
-}
-
-.cc {
-    background-color: red;
-}
-
-.el-main {
-    background-color: rgb(250, 252, 135);
-}
-
-.el-footer {
-    background-color: red;
+.el-row {
+    background-color: transparent;
 }
 </style>

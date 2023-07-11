@@ -1,7 +1,8 @@
-    <template>
-主页
-</template>
+<template>
 
+页脚
+
+</template>
 
 <script lang="ts" setup>
 
