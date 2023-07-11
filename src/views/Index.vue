@@ -24,6 +24,9 @@ const menuRef = ref()
 const spanI18n = ref()
 //切换body
 let currentTab = shallowRef(indexPage)
+const changePage = (page: any) => {
+    currentTab.value = page//切换body页面
+}
 const activeIndex = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {
     console.log(key, keyPath)
@@ -54,21 +57,18 @@ const changeIndexMenuStyleIn = () => {
     //header背景颜色
     rowIndexMenuSub.value.style.backgroundColor = 'white'
     //设置渐变
-    rowIndexMenuSub.value.style.transition = 'background-color .5s ease-out'
+    rowIndexMenuSub.value.style.transition = 'all 0.7s cubic-bezier(0.23,1,0.32,1) 0s'
     //设置下边框
-    rowIndexMenuSub.value.style.borderBottom='1px solid #a7a3a3'
+    // rowIndexMenuSub.value.style.borderBottom='0.3px solid #a7a3a3'
 }
 //鼠标移出导航栏
 const changeIndexMenuStyleOut = () => {
     headFontClass.value = 'unfoucs-head-font'
     rowIndexMenuSub.value.style.backgroundColor = 'transparent'
-    rowIndexMenuSub.value.style.transition = 'background-color .5s ease-out'
-    rowIndexMenuSub.value.style.borderBottom='0px solid #000'
+    rowIndexMenuSub.value.style.transition = 'all 0.7s cubic-bezier(0.23,1,0.32,1) 0s'
 }
 
-const changePage = (page: any) => {
-    currentTab = shallowRef(page)//切换body页面
-}
+
 
 i18n.global.locale = "zh"
 
@@ -165,16 +165,17 @@ i18n.global.locale = "zh"
 <style lang="scss" scoped>
 .foucs-head-font {
     color: black;
-    font-weight: bold;
-    transition:'color 0.5s';
-    font-size: 19px;
+    transition:'all 0.7s cubic-bezier(0.23,1,0.32,1) 0s';
+    font-family:Arial,微软雅黑;
+    font-size: 18px;
 }
 
 .unfoucs-head-font {
     color: rgb(255, 255, 255);
-    transition:'color 0.5s';
-    font-weight: bold;
-    font-size: 19px;
+    transition:'all 0.7s cubic-bezier(0.23,1,0.32,1) 0s';
+    // font-weight: bold;
+    font-family:Arial,微软雅黑;
+    font-size: 18px;
 }
 
 .fillc {

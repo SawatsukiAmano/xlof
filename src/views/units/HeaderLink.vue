@@ -1,7 +1,7 @@
 <template>
     <!--图标栏-->
     <div
-        style="padding-top: 1.5px; background-color: rgba(8, 8, 8, 0.8); border-bottom:1.5px solid rgb(0, 0, 0); text-align: right;">
+        style="padding-top: 1.5px; background-color: rgba(8, 8, 8, 0.8); border-bottom:1.5px solid #a7a3a3; text-align: right;">
         <el-popover title="抖音" trigger="hover" width="255">
             <template #reference>
                 <a href="https://www.douyin.com/user/MS4wLjABAAAAbRNr--Am8NylBFhEqTdjgPq6PPei9kkD_xIVvqg2S3A"
@@ -33,6 +33,7 @@
                 style="height: 17px;" alt="e-mail" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
     </div>
 </template>
+
 <script lang="ts" setup>
 import vxJPG from '@assets/img/vx.jpg'
 import dyJPG from '@assets/img/dy.jpg'
